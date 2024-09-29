@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.GenericServlet;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -35,6 +36,9 @@ public class SignUpServlet extends GenericServlet{
    
     PrintWriter printWriter=res.getWriter();
     printWriter.print("SignedUpSuccessfully !!!!!!!!!!! thank youuuuuu!");
+    RequestDispatcher dispatcher=req.getRequestDispatcher("login.html");
+    dispatcher.forward(req, res);
+    
     
     
     

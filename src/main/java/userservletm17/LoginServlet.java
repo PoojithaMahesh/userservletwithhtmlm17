@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.GenericServlet;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -56,17 +57,14 @@ public class LoginServlet extends HttpServlet{
 			User user=dao.findUserByEmail(email);
 			if(user.getPassword().equals(password)) {
 //				login success
-				PrintWriter printWriter=resp.getWriter();
-				printWriter.print("LOGIN SUCCES");
+				resp.sendRedirect("https://www.w3schools.blog/java-8-features-with-examples");
 			}else {
-				PrintWriter printWriter=resp.getWriter();
-				printWriter.print("INVALID Password");
+				RequestDispatcher dispatcher=req.getRequestDispatcher("login.html");
+				dispatcher.include(req, resp);
 			}
-			
-			
 		}else {
-			PrintWriter printWriter=resp.getWriter();
-			printWriter.print("INVALID EMAIL");
+			RequestDispatcher dispatcher=req.getRequestDispatcher("login.html");
+			dispatcher.include(req, resp);
 		}
 		
 		
